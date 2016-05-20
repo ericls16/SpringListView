@@ -12,7 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 /**
- * ¸»ÓĞµ¯ĞÔµÄListView
+ * æ¡ˆä¾‹ä¸»ç•Œé¢
  * 
  * @author eric liu
  *

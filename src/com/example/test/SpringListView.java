@@ -16,7 +16,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 
 /**
- * ¸»ÓĞµ¯ĞÔµÄListView(ÉÏÏÂÀ­¶¼ÓĞµ¯ĞÔ)
+ * å¯Œæœ‰å¼¹æ€§çš„ListView(ä¸Šä¸‹æ‹‰éƒ½æœ‰å¼¹æ€§)
  * 
  * @author eric liu
  * @creatTime 2016.05.20 11:14
@@ -25,24 +25,24 @@ import android.widget.ListView;
  */
 public class SpringListView extends ListView implements OnScrollListener {
 
-	private static final float PULL_FACTOR = 0.5F; // »¬¶¯Òò×Ó£¬ÈÃÏÂÀ­Ê±ÓĞ×èÄáĞ§¹û
-	private static final int PULL_BACK_REDUCE_STEP = 1; // ÏÂÀ­»Øµ¯Ê±µÄ²½³¤
-	private static final int PULL_BACK_TASK_PERIOD = 700; // »Øµ¯Ê±ÒÆ¶¯µÄ¸üĞÂ¼ä¸ô
+	private static final float PULL_FACTOR = 0.5F; // æ»‘åŠ¨å› å­ï¼Œè®©ä¸‹æ‹‰æ—¶æœ‰é˜»å°¼æ•ˆæœ
+	private static final int PULL_BACK_REDUCE_STEP = 1; // ä¸‹æ‹‰å›å¼¹æ—¶çš„æ­¥é•¿
+	private static final int PULL_BACK_TASK_PERIOD = 700; // å›å¼¹æ—¶ç§»åŠ¨çš„æ›´æ–°é—´éš”
 	
-	private boolean isRecored; // ¼ÇÂ¼ÕıÔÚ»¬¶¯×´Ì¬
-	private int startY; // ÆğÊ¼×İ×ø±ê
-	private View headView; // Ôö¼ÓµÄÍ·²¿²¼¾Ö
-	private int firstItemIndex; // ListViewµ±Ç°ÏÔÊ¾µÄµÚÒ»¸öÌõÄ¿
-	private boolean isUp; // ÉÏÀ­±êÖ¾
-	private int endItemIndex; // µ±Ç°Ò³ÃæÏÔÊ¾ListViewµÄ×îºóÒ»¸öÌõÄ¿µÄË÷Òı
-	private int maxItemIndex; // ListViewÁĞ±íÏîµÄ×î´óË÷ÒıÖµ
-	private int instance; // »¬¶¯µÄ¾àÀë
+	private boolean isRecored; // è®°å½•æ­£åœ¨æ»‘åŠ¨çŠ¶æ€
+	private int startY; // èµ·å§‹çºµåæ ‡
+	private View headView; // å¢åŠ çš„å¤´éƒ¨å¸ƒå±€
+	private int firstItemIndex; // ListViewå½“å‰æ˜¾ç¤ºçš„ç¬¬ä¸€ä¸ªæ¡ç›®
+	private boolean isUp; // ä¸Šæ‹‰æ ‡å¿—
+	private int endItemIndex; // å½“å‰é¡µé¢æ˜¾ç¤ºListViewçš„æœ€åä¸€ä¸ªæ¡ç›®çš„ç´¢å¼•
+	private int maxItemIndex; // ListViewåˆ—è¡¨é¡¹çš„æœ€å¤§ç´¢å¼•å€¼
+	private int instance; // æ»‘åŠ¨çš„è·ç¦»
 
-	private ScheduledExecutorService schedulor; // Ïß³Ì³Ø£¬ÓÃÓÚ¿ØÖÆ»Øµ¯µÄÒì²½ÈÎÎñÏß³Ì
-	private View rootView; // ´ú±í±¾ListView
+	private ScheduledExecutorService schedulor; // çº¿ç¨‹æ± ï¼Œç”¨äºæ§åˆ¶å›å¼¹çš„å¼‚æ­¥ä»»åŠ¡çº¿ç¨‹
+	private View rootView; // ä»£è¡¨æœ¬ListView
 	
 	/**
-	 * Ïß³Ì ÓÃÓÚ¶Ô½çÃæ½øĞĞ¸üĞÂ
+	 * çº¿ç¨‹ ç”¨äºå¯¹ç•Œé¢è¿›è¡Œæ›´æ–°
 	 */
 	private Handler handler = new Handler() {
 		@Override

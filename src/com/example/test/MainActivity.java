@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 /**
- * 富有弹性的ListView
+ * 棣栭〉
  * @author eric liu
  *
  */
