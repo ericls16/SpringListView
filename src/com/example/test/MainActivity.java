@@ -45,7 +45,6 @@ public class MainActivity extends Activity implements OnClickListener {
 			startActivity(new Intent(this, SpringActivity.class));
 			break;
 		}
-		
 	}
 
 }
